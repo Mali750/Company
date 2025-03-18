@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}<title>BASE.HTML</title>{% endblock title %}
+    <link rel="stylesheet" type="text/css" href="{% static 'staff/css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'staff/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'staff/css/all.css' %}">
+    {% block style %}  {% endblock style %}
+</head>
+<header>
+    <!-- Navigation Bar -->
+    <div class="logo">EmployeeMS</div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'dashboard' %}">Home</a></li>
+                <li><a href="#">Employees</a></li>
+                <li><a href="#">Departments</a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="{% url 'staff_details' %}">ViewList</a></li>
+                <li><a href="{% url 'staff' %}">Account</a></li>
+                
+                
+
+            </ul>
+        </nav>
+    </div>
+</header>
+<body>
+
+
+    {% block section %}{% endblock section %}
+    {% block content %}{% endblock content %}
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-auto sticky-footer">
+        <p class="mb-0">&copy; 2025 Employee Management System | All Rights Reserved</p>
+    </footer>
+
+    <script src="{% static 'staff/js/all.min.js'%}"></script>
+    <script src="{% static 'staff/js/bootstrap.js'%}"></script>
+    <script src="{% static 'staff/js/JQuery.js'%}"></script>
+    <script src="{% static 'staff/js/popper.js'%}"></script>
+</body>
+</html>

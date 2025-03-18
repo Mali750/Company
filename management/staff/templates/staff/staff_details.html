@@ -1,0 +1,57 @@
+{% extends "staff/base.html" %}
+
+{% block title %}<title>Staff Details</title>{% endblock title %}
+
+
+{% block content %}
+    <div class="col p-4">
+        <h4 class='text-center alert alert-info'>Details</h4>
+        
+        <p class='text-inline' style="display: flex; justify-content: flex-end; margin-right: 50px;">Staff Count: {{ staff|length }}</p> 
+
+        {% if staff %}
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope='row'>ID</th>
+                        <th scope='row'>Name</th>
+                        <th scope='row'>Email</th>
+                        <th scope='row'>Mobile</th>
+                        <th scope='row'>Department</th>
+                        <th scope='row'>User Id</th>
+                        <th scope='row'>Password</th>
+                        <th scope='row'>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--retrieve section-->
+                    {% for st in staff %}
+                        <tr>
+                            <td scope='row'>{{ st.id }}</td>
+                            <td>{{ st.name }}</td>
+                            <td>{{ st.email }}</td>
+                            <td>{{ st.mobile }}</td>
+                            <td>{{ st.department }}</td>
+                            <td>{{ st.userId }}</td>
+                            <td>{{ st.password }}</td>
+                            <!-- edit section-->
+                            <td>
+                                <a href="{% url 'update' st.id %}" class="btn btn-warning btn-sm">Edit</a>
+                                <!--delete section-->
+                                <form action="{% url 'confirm' st.id %}" method="post" class="d-inline">
+                                    {% csrf_token %}
+                                    {{form.as_p}}
+                                    {% comment %} <input type="submit" class="btn btn-danger btn-sm" value="Delete"> {% endcomment %}
+                                    <input type="submit" class='btn btn-danger btn-sm' value="Delete">
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <h4 class='text-center alert alert-warning'>No Staff Found</h4>
+        {% endif %}
+        
+    </div>
+{% endblock content %}
