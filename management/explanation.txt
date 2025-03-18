@@ -1,0 +1,8 @@
+base.html          # Common layout for all staff pages
+dashboard.html      # Staff dashboard
+staff_list.html     # List of all staff members
+staff_detail.html   # View individual staff profile
+staff_form.html     # Add/Edit staff details
+staff_delete.html   # Confirm delete staff
+login.html          # Staff login page
+register.html       # Staff registration page

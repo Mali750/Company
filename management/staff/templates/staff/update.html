@@ -1,0 +1,19 @@
+{% extends "staff/base.html" %}
+
+{% block title %}<title>Update Details</title>{% endblock title %}
+{% block content %}
+    <div class="row shadow-lg p-4">
+        <div class="col-sm-8 offset-2">
+            <h4 class="alert alert-info text-center">Update Information</h4>
+            <form action="" method='POST'>
+                {% csrf_token %}
+                {{form.as_p}}
+                <div class="text-center">
+                    <input type="submit" class='btn btn-success' value="Update">
+                    <a href="{% url 'dashboard' %}" class='btn btn-warning text-center' value='Home'>Back To Home</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}
