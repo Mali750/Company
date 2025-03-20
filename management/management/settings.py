@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'staff',
     'leave_management',
+    'phonenumber_field'
 ]
 
 MIDDLEWARE = [
@@ -71,6 +72,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'management.wsgi.application'
 
+AUTH_USER_MODEL = 'staff.Staff'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
