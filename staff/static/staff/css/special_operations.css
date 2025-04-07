@@ -1,0 +1,47 @@
+.table-container {
+    margin: 0px;
+    overflow-x: auto;
+}
+
+.staff-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.staff-table th,
+.staff-table td {
+    border: 1px solid #dee2e6;
+    padding: 12px 15px;
+    vertical-align: middle;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.staff-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.staff-table tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.staff-table tr:hover {
+    background-color: #e9ecef;
+}
+
+.action-buttons {
+    white-space: nowrap;
+}
+
+.staff-count {
+    margin: 20px 0;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    font-weight: 500;
+    text-align: right;
+}
