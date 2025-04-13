@@ -11,3 +11,23 @@ myenv/
 
 # Ignore VS Code settings
 .vscode/
+
+# Python
+*.pyc
+__pycache__/
+
+# Django
+db.sqlite3
+*.log
+
+# Migrations cache (but not actual migration files)
+**/__pycache__/
+
+# Environments
+myenv/
+venv/
+.env
+
+# VS Code or PyCharm
+.vscode/
+.idea/

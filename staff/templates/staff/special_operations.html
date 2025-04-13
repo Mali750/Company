@@ -16,7 +16,7 @@
     <div class="table-container">
         <table class="staff-table">
             <thead>
-                <tr>
+                <tr class='text-center'>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
@@ -37,7 +37,7 @@
                     <td title="{{ st.department }}">{{ st.department }}</td>
                     <td title="{{ st.userId }}">{{ st.userId }}</td>
                     <td title="{{ st.password }}">{{ st.password }}</td>
-                    <td class="action-buttons">
+                    <td class="action-buttons text-center">
                         <a href="{% url 'update' st.id %}" class="btn btn-warning btn-sm">Edit</a>
                         <form action="{% url 'confirm' st.id %}" method="post" class="d-inline">
                             {% csrf_token %}

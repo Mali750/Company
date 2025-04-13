@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'staff',
     'reports',
+    'attendance',
     'leave_management',
 ]
 

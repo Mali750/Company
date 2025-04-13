@@ -8,20 +8,25 @@
     <link rel="stylesheet" type="text/css" href="{% static 'staff/css/dashboard.css' %}">
     <link rel="stylesheet" href="{% static 'staff/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'staff/css/all.css' %}">
-    {% block style %}  {% endblock style %}
-    <style>
-        html, body {
-            height: 150%;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .main-content {
-            flex: 1;
-        }
-        
-    </style>
+    {% block style %} 
+        <style>
+            html, body {
+                height: 150%;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .main-content {
+                flex: 1;
+            }
+            nav {
+                padding: none;
+            }
+            
+        </style>
+    {% endblock style %}
+
 </head>
 <header class='d-flex justify-content-between align-item-center'>
     <!-- Navigation Bar -->

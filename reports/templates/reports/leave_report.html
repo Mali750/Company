@@ -1,0 +1,21 @@
+{% extends "staff/base.html" %}
+{% block title %}<title>Leave Report</title>{% endblock title %}
+
+{% block section %}
+<div class="container py-5">
+    <h2 class="mb-4">Leave Report</h2>
+    <p>Overview of employee leave records.</p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Employee</th>
+                <th>Leave Type</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Jane Smith</td><td>Sick Leave</td><td>2025-04-08</td></tr>
+        </tbody>
+    </table>
+</div>
+{% endblock section %}

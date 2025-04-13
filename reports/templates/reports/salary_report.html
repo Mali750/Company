@@ -1,0 +1,21 @@
+{% extends "staff/base.html" %}
+{% block title %}<title>Salary Report</title>{% endblock title %}
+
+{% block section %}
+<div class="container py-5">
+    <h2 class="mb-4">Salary Report</h2>
+    <p>This section includes salary details per employee.</p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Employee</th>
+                <th>Month</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>John Doe</td><td>March 2025</td><td>$4000</td></tr>
+        </tbody>
+    </table>
+</div>
+{% endblock section %}

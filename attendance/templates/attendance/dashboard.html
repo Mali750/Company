@@ -1,0 +1,46 @@
+{% extends "attendance/home.html" %}
+{% load static %}
+{% block title %}<title>Dashboard</title>{% endblock title %}
+{% block style %}{% endblock style %}
+{% block content %}
+        <div class="container mt-4">
+            <h2>Welcome, {{ request.user.get_full_name }}</h2>
+            
+            <!-- Check-in/Check-out Buttons -->
+            <div class="mb-4">
+                <a href="{% url 'check_in' %}" class="btn btn-success">Check In (Office)</a>
+                <a href="{% url 'check_out' %}" class="btn btn-danger">Check Out</a>
+            </div>
+    
+            <!-- Mobile Check-in Form -->
+            <form method="post" action="{% url 'mobile_check_in' %}">
+                {% csrf_token %}
+                <input type="hidden" name="latitude" value="37.7749">  <!-- Example: Replace with JS geolocation -->
+                <input type="hidden" name="longitude" value="-122.4194">
+                <button type="submit" class="btn btn-primary">Mobile Check-In</button>
+            </form>
+    
+            <!-- Attendance History -->
+            <h4 class="mt-4">Recent Records</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Check-In</th>
+                        <th>Check-Out</th>
+                        <th>Duration</th>
+                        <th>Source</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in records %}
+                    <tr>
+                        <td>{{ record.check_in }}</td>
+                        <td>{{ record.check_out|default:"-" }}</td>
+                        <td>{{ record.duration|default:"-" }}</td>
+                        <td>{{ record.source }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+{% endblock content %}

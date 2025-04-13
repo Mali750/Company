@@ -17,6 +17,11 @@
         font-weight: bold;
         text-align: center;
     }
+    a {
+        text-decoration: none;
+        color: rgb(20, 156, 81);
+        
+    }
  </style>
 
 {% endblock style %}
@@ -25,19 +30,22 @@
     <div class="row">
         <div class="mx-auto d-flex gap-3 flex-wrap justify-content-center mt-5 p-3">
             <div class="card text-center p-3 flex-fill" style="min-width: 200px;">
-                <h4 class="mb-0">Employee Attendance Report</h4>
+                <a href="{% url 'dashboard2' %}" target="_blank" rel="noopener noreferrer"><h4 class="mb-0"><marquee>Employee Attendance Report</marquee></h4></a>
+            </div>
+
+            <div class="card text-center p-3 flex-fill" style="min-width: 200px;">
+                <a href="{% url 'salary' %}" target="_blank"><h4 class="mb-0">Salary Report</h4></a>
+            </div>
+
+            <div class="card text-center p-3 flex-fill" style="min-width: 200px;">
+                <a href="{% url 'performance' %}" target="_blank"><h4 class="mb-0">Performance Report</h4></a>
+            </div>
+
+            <div class="card text-center p-3 flex-fill" style="min-width: 200px;">
+                <a href="{% url 'leave' %}" target="_blank"><h4 class="mb-0">Leave Report</h4></a>
             </div>
             <div class="card text-center p-3 flex-fill" style="min-width: 200px;">
-                <h4 class="mb-0">Salary Report</h4>
-            </div>
-            <div class="card text-center p-3 flex-fill" style="min-width: 200px;">
-                <h4 class="mb-0">Performance Report</h4>
-            </div>
-            <div class="card text-center p-3 flex-fill" style="min-width: 200px;">
-                <h4 class="mb-0">Leave Report</h4>
-            </div>
-            <div class="card text-center p-3 flex-fill" style="min-width: 200px;">
-                <h4 class="mb-0">Custom Reports</h4>
+                <a href="{% url 'custom' %}" target="_blank"><h4 class="mb-0">Custom Report</h4></a>
             </div>
         </div>
     </div>
