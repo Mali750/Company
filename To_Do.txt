@@ -1,2 +1,4 @@
 1> Task No. 1-- Have registeration form named register.html located at staff app through which user enter his details including user id and password. These details saved in database. When user want to login with his user id and password, the saved user id and password from registeration form match and redirect to special_operation.html page, If not match show an error.
 Status: Not Completed.
+2> Task No. 2-- Add attendance system thats why user can show present in office through fingerprits device of mobile. 
+Status: Incomplete.
