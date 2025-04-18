@@ -1,0 +1,18 @@
+{% extends "staff/base.html" %}
+{% block title %}<title>Registration</title>{% endblock title %}
+{% block section %}
+    <div class="row">
+        <div class="col-4 mx-auto mt-5 shadow-lg">
+            <h4 class='text-center mt-4'>Staff Registration</h4>
+            <form action="#" method="POST">  
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class='text-center'>
+                    <a href="{% url 'staff' %}" class='btn btn-success mb-4'>Register</a>
+                    <a href="{% url 'operations' %}" class='btn btn-success mb-4'>Login</a>
+                </div>
+            </form>  
+        </div>
+    </div>
+
+{% endblock section %}

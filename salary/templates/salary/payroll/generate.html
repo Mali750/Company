@@ -1,0 +1,62 @@
+{% extends "staff/base.html" %}
+{% load static %}
+
+{% block title %}Generate Payroll Confirmation{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-file-invoice me-2"></i>Generate Payroll Confirmation
+                    </h3>
+                </div>
+                
+                <div class="card-body">
+                    {% if messages %}
+                    <div class="mb-4">
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <div class="alert alert-warning" role="alert">
+                        <h4 class="alert-heading">Warning!</h4>
+                        <p>You are about to generate payroll for:</p>
+                        <hr>
+                        <p class="mb-0">
+                            <strong>Employee:</strong> {{ employee.get_full_name }}<br>
+                            <strong>Employee ID:</strong> {{ employee.employee_id }}<br>
+                            <strong>Month:</strong> {{ month|date:"F Y" }}
+                        </p>
+                    </div>
+
+                    <p class="text-muted mb-4">
+                        This action will calculate the employee's net salary based on their current salary structure 
+                        and any applicable deductions. Please verify the employee information before proceeding.
+                    </p>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="{% url 'salary:payroll-list' %}" class="btn btn-secondary">
+                                <i class="fas fa-times-circle me-2"></i>Cancel
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-check-circle me-2"></i>Confirm Generation
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

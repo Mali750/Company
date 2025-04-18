@@ -1,0 +1,38 @@
+{% extends "staff/base.html" %}
+{% load humanize %}
+{% block content %}
+<div class="deduction-list">
+    <h2>Your Deductions</h2>
+    
+    <div class="row">
+        {% for deduction in object_list %}
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ deduction.get_deduction_type_display }}</h5>
+                    <p class="card-text">
+                        Amount: ${{ deduction.amount|floatformat:2 }}<br>
+                        Date: {{ deduction.date_applied|date:"d M Y" }}
+                    </p>
+                    {% if deduction.description %}
+                    <p class="text-muted">{{ deduction.description }}</p>
+                    {% endif %}
+                </div>
+                <div class="card-footer">
+                    <small>
+                        Created by {{ deduction.created_by.get_full_name }}
+                        on {{ deduction.created_at|date:"d M Y H:i" }}
+                    </small>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                No deductions found for your account
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

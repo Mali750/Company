@@ -1,0 +1,45 @@
+# Ignore SQLite database
+db.sqlite3
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore environment folders
+myenv/
+.env
+
+# Ignore VS Code settings
+.vscode/
+
+# Python
+*.pyc
+__pycache__/
+
+# Django
+db.sqlite3
+*.log
+
+# Migrations cache (but not actual migration files)
+**/__pycache__/
+
+# Environments
+myenv/
+venv/
+.env
+
+# VS Code or PyCharm
+.vscode/
+.idea/
+
+
+management/__pycache__/__init__.cpython-39.pyc
+management/__pycache__/settings.cpython-39.pyc
+management/__pycache__/urls.cpython-39.pyc
+management/__pycache__/wsgi.cpython-39.pyc
+reports/__pycache__/__init__.cpython-39.pyc
+reports/__pycache__/admin.cpython-39.pyc
+reports/__pycache__/apps.cpython-39.pyc
+reports/__pycache__/models.cpython-39.pyc
+reports/__pycache__/urls.cpython-39.pyc
+reports/__pycache__/views.cpython-39.pyc

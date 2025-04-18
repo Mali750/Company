@@ -1,0 +1,52 @@
+{% extends "staff/base.html" %}
+{% block title %}<title>REPORTS</title>{% endblock title %}
+{% block style %}
+ <style>
+    .card {
+        width: 200px;
+        height: 300px;
+        background: white;
+        border-radius: 15px;
+        border: 2px solid black;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Arial', sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+    }
+    a {
+        text-decoration: none;
+        color: rgb(20, 156, 81);
+        
+    }
+ </style>
+
+{% endblock style %}
+
+{% block section %}
+    <div class="row">
+        <div class="mx-auto d-flex gap-3 flex-wrap justify-content-center mt-5 p-3">
+            <div class="card text-center p-3 flex-fill" style="min-width: 200px;">
+                <a href="{% url 'dashboard2' %}" target="_blank" rel="noopener noreferrer"><h4 class="mb-0"><marquee>Employee Attendance Report</marquee></h4></a>
+            </div>
+
+            <div class="card text-center p-3 flex-fill" style="min-width: 200px;">
+                <a href="{% url 'salary' %}" target="_blank"><h4 class="mb-0">Salary Report</h4></a>
+            </div>
+
+            <div class="card text-center p-3 flex-fill" style="min-width: 200px;">
+                <a href="{% url 'performance' %}" target="_blank"><h4 class="mb-0">Performance Report</h4></a>
+            </div>
+
+            <div class="card text-center p-3 flex-fill" style="min-width: 200px;">
+                <a href="{% url 'leave' %}" target="_blank"><h4 class="mb-0">Leave Report</h4></a>
+            </div>
+            <div class="card text-center p-3 flex-fill" style="min-width: 200px;">
+                <a href="{% url 'custom' %}" target="_blank"><h4 class="mb-0">Custom Report</h4></a>
+            </div>
+        </div>
+    </div>
+{% endblock section %}

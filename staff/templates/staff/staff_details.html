@@ -1,0 +1,49 @@
+{% extends "staff/base.html" %}
+{% load static %}
+
+{% block title %}<title>Staff Details</title>{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'staff/css/staff_details.css' %}">
+{% endblock style %}
+
+{% block content %}
+<div class="col p-4">
+    <h4 class='text-center alert alert-info'>Details</h4>
+
+    <div class="staff-count">Staff Count: {{ staff|length }}</div>
+
+    {% if staff %}
+    <div class="table-container">
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Department</th>
+                    <th>User ID</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody class="staff-table">
+                {% for st in staff %}
+                <tr>
+                    <td title="{{ st.id }}">{{ st.id }}</td>
+                    <td title="{{ st.name }}">{{ st.name }}</td>
+                    <td title="{{ st.email }}">{{ st.email }}</td>
+                    <td title="{{ st.mobile }}">{{ st.mobile }}</td>
+                    <td title="{{ st.department }}">{{ st.department }}</td>
+                    <td title="{{ st.userId }}">{{ st.userId }}</td>
+                    <td title="{{ st.password }}">{{ st.password }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <h4 class='text-center alert alert-warning'>No Staff Found</h4>
+    {% endif %}
+</div>
+{% endblock content %}

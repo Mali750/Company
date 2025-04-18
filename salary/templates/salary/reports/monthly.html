@@ -1,0 +1,56 @@
+{% extends "staff/base.html" %}
+
+{% block content %}
+<div class="salary-report">
+    <h2>Monthly Salary Report - {{ month|date:"F Y" }}</h2>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Payroll</h5>
+                    <p class="display-4">{{ report_data.total_payroll|currency }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Department Breakdown</h5>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Department</th>
+                                <th>Total Salary</th>
+                                <th>% of Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for dept in report_data.department_breakdown %}
+                            <tr>
+                                <td>{{ dept.name }}</td>
+                                <td>{{ dept.total|currency }}</td>
+                                <td>
+                                    {{ dept.total|divide:report_data.total_payroll|percentage }}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="tax-summary mt-4">
+        <h4>Tax Deductions Summary</h4>
+        <div class="progress">
+            <div class="progress-bar" 
+                 style="width: {{ report_data.tax_summary|divide:report_data.total_payroll|percentage }}">
+                {{ report_data.tax_summary|currency }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

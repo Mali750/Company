@@ -1,0 +1,62 @@
+{% extends "staff/base.html" %}
+
+{% block content %}
+<div class="payroll-list">
+    <h2>Payroll Records</h2>
+    
+    {% comment %} {% if request.user.is_hr %}
+    <a href="{% url 'salary:generate-payroll' %}" class="btn btn-primary">
+        Generate New Payroll
+    </a>
+    {% endif %} {% endcomment %}
+    {% if perms.salary.can_generate_payroll %}
+    <a href="{% url 'salary:payroll-generate' employee_id=request.user.id %}" class="btn btn-primary">
+        Generate New Payroll
+    </a>
+    {% endif %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Employee</th>
+                <th>Month</th>
+                <th>Gross Salary</th>
+                <th>Net Salary</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for payroll in payrolls %}
+            <tr>
+                <td>{{ payroll.employee.get_full_name }}</td>
+                <td>{{ payroll.month|date:"M Y" }}</td>
+                {% comment %} <td>{{ payroll.gross_salary|currency }}</td>
+                <td>{{ payroll.net_salary|currency }}</td> {% endcomment %}
+                <td> ${{ deduction.amount|floatformat:2 }}</td>
+                <td> ${{ deduction.amount|floatformat:2 }}</td>
+                <td>
+                    <span class="badge status-{{ payroll.status }}">
+                        {{ payroll.get_status_display }}
+                    </span>
+                </td>
+                <td>
+                    <a href="{% url 'salary:payroll-detail' payroll.pk %}" class="btn btn-sm btn-info">
+                        View
+                    </a>
+                    {% if payroll.status == 'draft' and request.user.is_hr %}
+                    <a href="{% url 'salary:edit-payroll' payroll.pk %}" class="btn btn-sm btn-warning">
+                        Edit
+                    </a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No payroll records found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

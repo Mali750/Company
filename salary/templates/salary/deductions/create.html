@@ -1,0 +1,144 @@
+{% extends "staff/base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Create New Deduction</h5>
+                <a href="{% url 'salary:deduction-list' %}" class="btn btn-light btn-sm">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+            </div>
+        </div>
+        
+        <div class="card-body">
+            <form method="post" novalidate>
+                {% csrf_token %}
+                
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {% for error in form.non_field_errors %}
+                            {{ error }}
+                        {% endfor %}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+
+                <div class="row">
+                    <!-- Employee Field -->
+                    <div class="col-md-6 mb-3">
+                        <label for="{{ form.employee.id_for_label }}" class="form-label">
+                            {{ form.employee.label }}
+                            {% if form.employee.field.required %}<span class="text-danger">*</span>{% endif %}
+                        </label>
+                        {{ form.employee }}
+                        {% for error in form.employee.errors %}
+                            <div class="invalid-feedback d-block">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Deduction Type -->
+                    <div class="col-md-6 mb-3">
+                        <label for="{{ form.deduction_type.id_for_label }}" class="form-label">
+                            {{ form.deduction_type.label }}
+                            {% if form.deduction_type.field.required %}<span class="text-danger">*</span>{% endif %}
+                        </label>
+                        {{ form.deduction_type }}
+                        {% for error in form.deduction_type.errors %}
+                            <div class="invalid-feedback d-block">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Amount -->
+                    <div class="col-md-6 mb-3">
+                        <label for="{{ form.amount.id_for_label }}" class="form-label">
+                            {{ form.amount.label }}
+                            {% if form.amount.field.required %}<span class="text-danger">*</span>{% endif %}
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            {{ form.amount }}
+                        </div>
+                        {% for error in form.amount.errors %}
+                            <div class="invalid-feedback d-block">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Date Applied -->
+                    <div class="col-md-6 mb-3">
+                        <label for="{{ form.date_applied.id_for_label }}" class="form-label">
+                            {{ form.date_applied.label }}
+                            {% if form.date_applied.field.required %}<span class="text-danger">*</span>{% endif %}
+                        </label>
+                        {{ form.date_applied }}
+                        {% for error in form.date_applied.errors %}
+                            <div class="invalid-feedback d-block">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="mb-3">
+                    <label for="{{ form.description.id_for_label }}" class="form-label">
+                        {{ form.description.label }}
+                        {% if form.description.field.required %}<span class="text-danger">*</span>{% endif %}
+                    </label>
+                    {{ form.description }}
+                    <small class="form-text text-muted">Maximum 500 characters</small>
+                    {% for error in form.description.errors %}
+                        <div class="invalid-feedback d-block">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                    <button type="submit" class="btn btn-primary px-4">
+                        <i class="fas fa-save me-2"></i>Create Deduction
+                    </button>
+                    <a href="{% url 'salary:deduction-list' %}" class="btn btn-outline-secondary px-4">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Add Bootstrap validation classes
+document.addEventListener('DOMContentLoaded', function() {
+    // Add was-validated class on form submission
+    const forms = document.querySelectorAll('form');
+    Array.prototype.slice.call(forms).forEach(function(form) {
+        form.addEventListener('submit', function(event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    });
+
+    // Add Bootstrap classes to form inputs
+    const inputs = document.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+        input.classList.add('form-control');
+        if (input.hasAttribute('required')) {
+            input.setAttribute('required', 'required');
+        }
+    });
+    
+    // Special handling for select elements
+    const selects = document.querySelectorAll('select');
+    selects.forEach(select => {
+        select.classList.add('form-select');
+    });
+});
+</script>
+{% endblock %}

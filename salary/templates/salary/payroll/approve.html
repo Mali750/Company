@@ -1,0 +1,88 @@
+{% extends "staff/base.html" %}
+{% load static humanize %}
+
+{% block title %}Approve Payroll{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-lg">
+                <div class="card-header bg-warning text-dark">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-file-invoice-dollar me-2"></i>Payroll Approval
+                    </h3>
+                </div>
+                
+                <div class="card-body">
+                    {% if messages %}
+                    <div class="mb-4">
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <div class="alert alert-danger" role="alert">
+                        <h4 class="alert-heading">Final Approval Required</h4>
+                        <p>You are about to approve the following payroll entry. This action will:</p>
+                        <ul>
+                            <li>Mark the payroll as approved</li>
+                            <li>Make the payment available for processing</li>
+                            <li>Create an audit trail entry</li>
+                        </ul>
+                        <hr>
+                        <p class="mb-0 fw-bold">This action cannot be undone.</p>
+                    </div>
+
+                    <div class="payroll-details mb-4">
+                        <h5 class="mb-3">Payroll Details</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <dl class="row">
+                                    <dt class="col-sm-5">Employee:</dt>
+                                    <dd class="col-sm-7">{{ payroll.employee.get_full_name }}</dd>
+
+                                    <dt class="col-sm-5">Period:</dt>
+                                    <dd class="col-sm-7">{{ payroll.month|date:"F Y" }}</dd>
+
+                                    <dt class="col-sm-5">Status:</dt>
+                                    <dd class="col-sm-7"><span class="badge bg-secondary">{{ payroll.get_status_display }}</span></dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl class="row">
+                                    <dt class="col-sm-5">Gross Salary:</dt>
+                                    <dd class="col-sm-7">${{ payroll.gross_salary|intcomma }}</dd>
+
+                                    <dt class="col-sm-5">Total Deductions:</dt>
+                                    <dd class="col-sm-7">${{ payroll.total_deductions|intcomma }}</dd>
+
+                                    <dt class="col-sm-5">Net Salary:</dt>
+                                    <dd class="col-sm-7 fw-bold">${{ payroll.net_salary|intcomma }}</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="{% url 'salary:payroll-detail' pk=payroll.pk %}" class="btn btn-secondary">
+                                <i class="fas fa-chevron-left me-2"></i>Review Details
+                            </a>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-check-circle me-2"></i><a href="{% url 'salary:approve-payroll' pk=payroll.pk %}">Approve</a>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

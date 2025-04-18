@@ -1,0 +1,30 @@
+{% extends "staff/base.html" %}
+
+{% block content %}
+<div class="salary-structure">
+    <h2>Salary Structure for {{ employee.get_full_name }}</h2>
+    
+    <div class="structure-details">
+        <dl class="row">
+            <dt class="col-sm-3">Base Salary</dt>
+            <dd class="col-sm-9">{{ salary_structure.base_salary|currency }}</dd>
+            
+            <dt class="col-sm-3">Housing Allowance</dt>
+            <dd class="col-sm-9">{{ salary_structure.housing_allowance|currency }}</dd>
+            
+            <dt class="col-sm-3">Transport Allowance</dt>
+            <dd class="col-sm-9">{{ salary_structure.transport_allowance|currency }}</dd>
+            
+            <dt class="col-sm-3">Effective Date</dt>
+            <dd class="col-sm-9">{{ salary_structure.effective_date|date:"d M Y" }}</dd>
+        </dl>
+    </div>
+    
+    {% if request.user.is_hr %}
+    <a href="{% url 'salary:salary-structure-update' salary_structure.pk %}" 
+       class="btn btn-primary">
+        Update Structure
+    </a>
+    {% endif %}
+</div>
+{% endblock %}
