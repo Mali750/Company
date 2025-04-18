@@ -23,7 +23,11 @@ def check_in(request):
         source=source,
         location="Office"  # Replace with GPS data
     )
+<<<<<<< HEAD
     return redirect('dashboard2')
+=======
+    return redirect('dashboard')
+>>>>>>> 99e07d02368f77df8e52c0a9418412140eabf0f6
 
 @login_required
 def check_out(request):
@@ -31,7 +35,11 @@ def check_out(request):
     record = AttendanceRecord.objects.filter(employee=employee, check_out__isnull=True).latest('check_in')
     record.check_out = timezone.now()
     record.save()
+<<<<<<< HEAD
     return redirect('dashboard2')
+=======
+    return redirect('dashboard')
+>>>>>>> 99e07d02368f77df8e52c0a9418412140eabf0f6
 
 @login_required
 def mobile_check_in(request):
@@ -45,7 +53,11 @@ def mobile_check_in(request):
                 source='mobile',
                 location=f"{lat},{lon}"
             )
+<<<<<<< HEAD
     return redirect('dashboard2')
+=======
+    return redirect('dashboard')
+>>>>>>> 99e07d02368f77df8e52c0a9418412140eabf0f6
 
 @login_required
 def dashboard(request):
@@ -67,7 +79,11 @@ def dashboard(request):
 def create_employee_profile(request):
     # Prevent duplicate profiles
     if hasattr(request.user, 'employee'):
+<<<<<<< HEAD
         return redirect('dashboard2')  # Or redirect to profile update page
+=======
+        return redirect('dashboard')  # Or redirect to profile update page
+>>>>>>> 99e07d02368f77df8e52c0a9418412140eabf0f6
 
     try:
         if request.method == 'POST':

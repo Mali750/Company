@@ -22,5 +22,8 @@ urlpatterns = [
     path('', include('staff.urls')),
     path('', include('reports.urls')),
     path('', include('attendance.urls')),
+<<<<<<< HEAD
     path('', include('salary.urls')),
+=======
+>>>>>>> 99e07d02368f77df8e52c0a9418412140eabf0f6
 ]

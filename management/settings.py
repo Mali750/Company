@@ -37,13 +37,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'django.contrib.humanize',
+=======
+>>>>>>> 99e07d02368f77df8e52c0a9418412140eabf0f6
     'rest_framework',
     'staff',
     'reports',
     'attendance',
+<<<<<<< HEAD
     'salary',
     'django_filters',
+=======
+>>>>>>> 99e07d02368f77df8e52c0a9418412140eabf0f6
     'leave_management',
 ]
 
@@ -129,6 +135,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+<<<<<<< HEAD
 
 
 
@@ -143,3 +150,5 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'auth.User'
+=======
+>>>>>>> 99e07d02368f77df8e52c0a9418412140eabf0f6

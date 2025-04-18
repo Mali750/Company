@@ -1,7 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.contrib.auth.hashers import check_password, make_password
+<<<<<<< HEAD
 from django.contrib import messages
+=======
+>>>>>>> 99e07d02368f77df8e52c0a9418412140eabf0f6
 from .forms import StaffForm, LoginForm
 from .models import Staff, LoginModel
 
